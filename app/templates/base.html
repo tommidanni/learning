@@ -92,10 +92,24 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <div class="header-icons">
+									<div class="header-icons">
                                         <a class="shopping-cart" href="{{url_for('cart')}}"><i class="fas fa-shopping-cart"></i></a>
                                         <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                                        <a class="user" href="{{url_for('login_form')}}"><i class="fas fa-user"></i></a>	
+
+                                        {% if current_user.is_authenticated %}
+
+										<li><a href="#">{{current_user.username}}</a>
+											<ul class="sub-menu">
+												<li><a href="#">My Account</a></li>
+												<li><a href="{{url_for('logout')}}">Log Out</a></li>
+											</ul>
+										</li>
+
+										{% else %}
+
+											<a class="user" href="{{url_for('login_form')}}"><i class="fas fa-user"></i></a>	
+											
+										{% endif %}
                                     </div>
                                 </li>
                             </ul>
@@ -132,34 +146,6 @@
 
     {% block content %}
     {% endblock %}
-
-    <!-- logo carousel -->
-	<div class="logo-carousel-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="logo-carousel-inner">
-						<div class="single-logo-item">
-							<img src="{{url_for('static', filename='img/company-logos/1.png')}}" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="{{url_for('static', filename='img/company-logos/2.png')}}" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="{{url_for('static', filename='img/company-logos/3.png')}}" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="{{url_for('static', filename='img/company-logos/4.png')}}" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="{{url_for('static', filename='img/company-logos/5.png')}}" alt="">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end logo carousel -->
 
 	<!-- footer -->
 	<div class="footer-area">
