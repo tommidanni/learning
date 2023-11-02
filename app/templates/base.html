@@ -65,32 +65,9 @@
                                     </ul>
                                 </li>
                                 <li><a href="{{url_for('about')}}">About</a></li>
-                                <li><a href="#">Pages</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="{{url_for('page_not_found')}}">page_not_found page</a></li>
-                                        <li><a href="{{url_for('about')}}">About</a></li>
-                                        <li><a href="{{url_for('cart')}}">Cart</a></li>
-                                        <li><a href="{{url_for('checkout')}}">Check Out</a></li>
-                                        <li><a href="{{url_for('contact')}}">Contact</a></li>
-                                        <li><a href="{{url_for('news')}}">News</a></li>
-                                        <li><a href="{{url_for('shop')}}">Shop</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="{{url_for('news')}}">News</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="{{url_for('news')}}">News</a></li>
-                                        <li><a href="{{url_for('single_news')}}">Single News</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="{{url_for('contact')}}">Contact</a></li>
                                 <li><a href="{{url_for('shop')}}">Shop</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="{{url_for('shop')}}">Shop</a></li>
-                                        <li><a href="{{url_for('checkout')}}">Check Out</a></li>
-                                        <li><a href="{{url_for('single_product')}}">Single Product</a></li>
-                                        <li><a href="{{url_for('cart')}}">Cart</a></li>
-                                    </ul>
                                 </li>
+								<li><a href="{{url_for('contact')}}">Contact</a></li>
                                 <li>
 									<div class="header-icons">
                                         <a class="shopping-cart" href="{{url_for('cart')}}"><i class="fas fa-shopping-cart"></i></a>
@@ -98,13 +75,11 @@
 
                                         {% if current_user.is_authenticated %}
 
-										<li><a href="#">{{current_user.username}}</a>
+										<a href="#">{{current_user.username}}</a>
 											<ul class="sub-menu">
 												<li><a href="#">My Account</a></li>
 												<li><a href="{{url_for('logout')}}">Log Out</a></li>
 											</ul>
-										</li>
-
 										{% else %}
 
 											<a class="user" href="{{url_for('login_form')}}"><i class="fas fa-user"></i></a>	
