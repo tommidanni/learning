@@ -1,49 +1,53 @@
 {% extends "base.html" %}
 
 	{% block content %}
+
 	<!-- breadcrumb-section -->
-	<div class="breadcrumb-section breadcrumb-bg">
+
+	<div id="breadcrumb-section-login" class="breadcrumb-section breadcrumb-bg">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						{% for error in form.username.errors %}
-            			<p>[{{ error }}]</p>
-            			{% endfor %}
-						{% for error in form.password.errors %}
-						<p>[{{ error }}]</p>
-						{% endfor %}
+						<p>{{message}}</p>
 					</div>
 				</div>
+			</div>
+			<div class = "row">
+
+				<!-- login form area -->
+
+				<div class="form-area">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="form-bar">
+									<div class="form-bar-tablecell">
+										<form action="" method="post" novalidate>
+											{{ form.hidden_tag() }}
+											<p>
+												<br>
+												{{ form.username(size=32) }}
+											</p>
+											<p>
+												<br>
+												{{ form.password(size=32) }}
+											</p>
+											<p>{{ form.submit() }}</p>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- end login form area -->
+
 			</div>
 		</div>
 	</div>
 	<!-- end breadcrumb section -->
-	<!-- login form area -->
-	<div class="form-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="form-bar">
-						<div class="form-bar-tablecell">
-							<form action="" method="post" novalidate>
-								{{ form.hidden_tag() }}
-								<p>
-									{{ form.username.label }}<br>
-									{{ form.username(size=32) }}
-								</p>
-								<p>
-									{{ form.password.label }}<br>
-									{{ form.password(size=32) }}
-								</p>
-								<p>{{ form.submit() }}</p>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end login form area -->
+	
 
 	{% endblock %}

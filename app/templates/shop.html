@@ -17,99 +17,46 @@
 	<!-- end breadcrumb section -->
 
 	<!-- products -->
-	<div class="product-section mt-150 mb-150">
-		<div class="container">
+
+	<div class="product-section mt-150 mb-150 ml-80">
 
 			<div class="row">
                 <div class="col-md-12">
                     <div class="product-filters">
                         <ul>
                             <li class="active" data-filter="*">All</li>
-                            <li data-filter=".strawberry">Strawberry</li>
-                            <li data-filter=".berry">Berry</li>
-                            <li data-filter=".lemon">Lemon</li>
+                            <li data-filter=".wine" >Wine</li>
+                            <li data-filter=".cachaca" >Cachaça</li>
+                            <li data-filter=".other" >Other</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-			<div class="row product-lists">
-				<div class="col-lg-4 col-md-6 text-center strawberry">
-					<div class="single_product-item">
-						<div class="product-image">
-							<a href="{{url_for('single_product')}}"><img src="{{url_for('static', filename='img/products/product-img-1.jpg')}}" alt=""></a>
-						</div>
-						<h3>Strawberry</h3>
-						<p class="product-price"><span>Per Kg</span> 85$ </p>
-						<a href="{{url_for('cart')}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 text-center berry">
-					<div class="single_product-item">
-						<div class="product-image">
-							<a href="{{url_for('single_product')}}"><img src="{{url_for('static', filename='img/products/product-img-2.jpg')}}" alt=""></a>
-						</div>
-						<h3>Berry</h3>
-						<p class="product-price"><span>Per Kg</span> 70$ </p>
-						<a href="{{url_for('cart')}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 text-center lemon">
-					<div class="single_product-item">
-						<div class="product-image">
-							<a href="{{url_for('single_product')}}"><img src="{{url_for('static', filename='img/products/product-img-3.jpg')}}" alt=""></a>
-						</div>
-						<h3>Lemon</h3>
-						<p class="product-price"><span>Per Kg</span> 35$ </p>
-						<a href="{{url_for('cart')}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single_product-item">
-						<div class="product-image">
-							<a href="{{url_for('single_product')}}"><img src="{{url_for('static', filename='img/products/product-img-4.jpg')}}" alt=""></a>
-						</div>
-						<h3>Avocado</h3>
-						<p class="product-price"><span>Per Kg</span> 50$ </p>
-						<a href="{{url_for('cart')}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single_product-item">
-						<div class="product-image">
-							<a href="{{url_for('single_product')}}"><img src="{{url_for('static', filename='img/products/product-img-5.jpg')}}" alt=""></a>
-						</div>
-						<h3>Green Apple</h3>
-						<p class="product-price"><span>Per Kg</span> 45$ </p>
-						<a href="{{url_for('cart')}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 text-center strawberry">
-					<div class="single_product-item">
-						<div class="product-image">
-							<a href="{{url_for('single_product')}}"><img src="{{url_for('static', filename='img/products/product-img-6.jpg')}}" alt=""></a>
-						</div>
-						<h3>Strawberry</h3>
-						<p class="product-price"><span>Per Kg</span> 80$ </p>
-						<a href="{{url_for('cart')}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
+			<div class="product-list">
+				{% for p in products %}
+            			{% if loop.index0 % 3 == 0 %}
+            			<div class="row mb-150">
+            			{% endif %}
+            			<div class="col-lg-4 col-md-6 text-center">
+            			    <div class="single-product-item" data-category="{{p.product_type}}">
+            			        <div class="product-image">
+            			            <a href="{{url_for('single_product')}}"><img src="{{url_for('static', filename=p.product_img)}}" alt=""></a>
+            			        </div>
+            			        <h3>{{p.product_name}}</h3>
+            			        <p class="product-price">{{p.product_price|string}} €</p>
+								{% if not current_user.is_authenticated %}
+									<a class="cart-btn" href="{{url_for('login_form', message='You must be logged in to add item to your cart')}}"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+								{% else %}
+            			        	<a class="cart-btn" id = "{{p.id}}"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+								{% endif %}
+            			    </div>
+            			</div>
+            			{% if loop.index0 % 3 == 2 or loop.last %}
+            			</div>
+            			{% endif %}
+		    	{% endfor %}
 			</div>
-
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<div class="pagination-wrap">
-						<ul>
-							<li><a href="#">Prev</a></li>
-							<li><a href="#">1</a></li>
-							<li><a class="active" href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">Next</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 	<!-- end products -->
 

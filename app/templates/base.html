@@ -30,6 +30,7 @@
 	<link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
 	<!-- responsive -->
 	<link rel="stylesheet" href="{{url_for('static', filename='css/responsive.css')}}">
+	
 
 </head>
 <body>
@@ -68,22 +69,20 @@
                                 <li><a href="{{url_for('shop')}}">Shop</a>
                                 </li>
 								<li><a href="{{url_for('contact')}}">Contact</a></li>
-                                <li>
+                                <li id="header-icons">
 									<div class="header-icons">
                                         <a class="shopping-cart" href="{{url_for('cart')}}"><i class="fas fa-shopping-cart"></i></a>
                                         <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 
                                         {% if current_user.is_authenticated %}
 
-										<a href="#">{{current_user.username}}</a>
+										<a id="account" href="#">{{current_user.username}}</a>
 											<ul class="sub-menu">
 												<li><a href="#">My Account</a></li>
 												<li><a href="{{url_for('logout')}}">Log Out</a></li>
 											</ul>
 										{% else %}
-
-											<a class="user" href="{{url_for('login_form')}}"><i class="fas fa-user"></i></a>	
-											
+											<a class="user" href="{{url_for('login_form',message='Log in')}}"><i class="fas fa-user"></i></a>	
 										{% endif %}
                                     </div>
                                 </li>
@@ -149,7 +148,6 @@
 							<li><a href="{{url_for('index')}}">Home</a></li>
 							<li><a href="{{url_for('about')}}">About</a></li>
 							<li><a href="{{url_for('shop')}}">Shop</a></li>
-							<li><a href="{{url_for('news')}}">News</a></li>
 							<li><a href="{{url_for('contact')}}">Contact</a></li>
 						</ul>
 					</div>
@@ -212,5 +210,10 @@
 	<script src="{{url_for('static', filename='js/sticker.js')}}"></script>
 	<!-- main js -->
 	<script src="{{url_for('static', filename='js/main.js')}}"></script>
+	<!-- filter js-->
+	<script src="{{url_for('static', filename='js/filter.js')}}"></script>
+	<!-- cart js -->
+	<script src="{{url_for('static', filename='js/cart.js')}}"></script>
+	
 </body>
 </html>
