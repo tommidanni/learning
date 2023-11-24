@@ -4,13 +4,11 @@ E-commerce application created from the Fruitkha Bootstrap template. https://the
 
 Functionalities that I have added : 
 
-Account system
-Cart system
-AJAX Filter system 
-Database
+account system,
+, cart system
+, AJAX Filter system 
+, database for products and users
 
 Functionnalities that I will add : 
 
-e-mail confirmation system
-No-account cart system
-Payment system
+e-mail confirmation system, no-account cart system, payment system
